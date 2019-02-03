@@ -30,9 +30,6 @@ RUN useradd -d /home/wireshark -m wireshark -g wireshark && \
 passwd -d wireshark && \
 adduser wireshark sudo
 
-# AJOUT UTILISATEUR AU GROUPE WIRESHARK
-
-
 # SELECTION UTILISATEUR
 USER wireshark
 
