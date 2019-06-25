@@ -1,6 +1,6 @@
 # WIRESHARK
 
-[![dockeri.co](https://dockeri.co/image/alexandreoda/wireshark)](https://hub.docker.com/r/alexandreoda/wireshark)
+<img src="http://www.packetiq.com/Images/Powered%20by%20WS%20Oval.png/>
 
 
 ## INDEX
@@ -14,10 +14,7 @@
 
 ## BADGES
 
-[![version](https://images.microbadger.com/badges/version/alexandreoda/wireshark.svg)](https://microbadger.com/images/alexandreoda/wireshark)
-[![size](https://images.microbadger.com/badges/image/alexandreoda/wireshark.svg)](https://microbadger.com/images/alexandreoda/wireshark")
-[![build](https://img.shields.io/docker/build/alexandreoda/wireshark.svg)](https://hub.docker.com/r/alexandreoda/wireshark)
-[![automated](https://img.shields.io/docker/automated/alexandreoda/wireshark.svg)](https://hub.docker.com/r/alexandreoda/wireshark)
+[![pipeline status](https://gitlab.com/oda-alexandre/wireshark/badges/master/pipeline.svg)](https://gitlab.com/oda-alexandre/wireshark/commits/master)
 
 
 
