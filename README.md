@@ -7,8 +7,8 @@
 
 - [Badges](#BADGES)
 - [Introduction](#INTRODUCTION)
-- [Prerequis](#PREREQUIS)
-- [Installation](#INSTALLATION)
+- [Prerequisites](#PREREQUISITESITES)
+- [Install](#INSTALL)
 - [License](#LICENSE)
 
 
@@ -20,19 +20,25 @@
 
 ## INTRODUCTION
 
-Ce repository contient le fichier Dockerfile de
+Docker image of :
 
 - [wireshark](https://www.wireshark.org)
 
-Mis à jour automatiquement dans le [docker hub public](https://hub.docker.com/r/alexandreoda/wireshark)
+Continuous integration on :
+
+- [gitlab](https://gitlab.com/oda-alexandre/wireshark/pipelines)
+
+Automatically updated on :
+
+- [docker hub public](https://hub.docker.com/r/alexandreoda/wireshark)
 
 
-## PREREQUIS
+## PREREQUISITES
 
-Installer [docker](https://www.docker.com)
+Use [docker](https://www.docker.com)
 
 
-## INSTALLATION
+## INSTALL
 
 ```
 docker run -d --name wireshark -v /tmp/.X11-unix/:/tmp/.X11-unix/ -v ${HOME}:/home/wireshark -v /etc/localtime:/etc/localtime:ro --network host --cap-add=NET_ADMIN -e DISPLAY alexandreoda/wireshark
@@ -41,4 +47,4 @@ docker run -d --name wireshark -v /tmp/.X11-unix/:/tmp/.X11-unix/ -v ${HOME}:/ho
 
 ## LICENSE
 
-[![GPLv3+](http://gplv3.fsf.org/gplv3-127x51.png)](https://github.com/oda-alexandre/wireshark/blob/master/LICENSE)
+[![GPLv3+](http://gplv3.fsf.org/gplv3-127x51.png)](https://gitlab.com/oda-alexandre/wireshark/blob/master/LICENSE)
