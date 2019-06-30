@@ -1,6 +1,6 @@
 # WIRESHARK
 
-<img src="http://www.packetiq.com/Images/Powered%20by%20WS%20Oval.png/>
+<img src="http://www.packetiq.com/Images/Powered%20by%20WS%20Oval.png/" width="200" height="200"/>
 
 
 ## INDEX
