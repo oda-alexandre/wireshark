@@ -1,53 +1,50 @@
-# IMAGE TO USE
 FROM debian:stretch-slim
 
-# MAINTAINER
 MAINTAINER http://www.oda-alexandre.com/
 
-# VARIABLES
 ENV USER wireshark
 ENV LANG fr_FR.UTF-8
 
-# INSTALL PACKAGES
-RUN apt-get update && apt-get install --no-install-recommends -y \
+RUN echo -e '\033[36;1m ******* INSTALL PACKAGES ******** \033[0m' && \
+apt-get update && apt-get install --no-install-recommends -y \
 sudo \
 locales \
 apt-transport-https \
 ca-certificates \
 gnupg \
 dirmngr \
-wget && \
+wget
 
-# CHANGE LOCALES
-echo ${LANG} > /etc/locale.gen && locale-gen && \
+RUN echo -e '\033[36;1m ******* CHANGE LOCALES ******** \033[0m' && \
+echo ${LANG} > /etc/locale.gen && locale-gen
 
-# CHANGE OF FILE /etc/apt/sources.list WITH REPOS kali-rolling contrib non-free
+RUN echo -e '\033[36;1m ******* ADD contrib non-free IN sources.list ******** \033[0m' && \
 echo 'deb https://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list && \
 echo 'deb-src https://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list && \
-wget -q -O - https://archive.kali.org/archive-key.asc | apt-key add && \
+wget -q -O - https://archive.kali.org/archive-key.asc | apt-key add
 
-# INSTALL APP
+RUN echo -e '\033[36;1m ******* INSTALL APP ******** \033[0m' && \
 apt-get update && yes | apt-get install --no-install-recommends -y \
-wireshark && \
+wireshark
 
-# ADD USER AND ADD OF USER TO THE GROUP WIRESHARK
+RUN echo -e '\033[36;1m ******* ADD USER & ADD USER TO THE GROUP WIRESHARK ******** \033[0m' && \
 useradd -d /home/${USER} -m ${USER} -g wireshark && \
 passwd -d ${USER} && \
 adduser ${USER} sudo
 
-# SELECT USER
+RUN echo -e '\033[36;1m ******* SELECT USER ******** \033[0m'
 USER ${USER}
 
-# SELECT WORKING SPACE
+RUN echo -e '\033[36;1m ******* SELECT WORKING SPACE ******** \033[0m'
 WORKDIR /home/${USER}
 
-# CLEANING
-RUN sudo apt-get --purge autoremove -y \
+RUN echo -e '\033[36;1m ******* CLEANING ******** \033[0m' && \
+sudo apt-get --purge autoremove -y \
 wget && \
 sudo apt-get autoclean -y && \
 sudo rm /etc/apt/sources.list && \
 sudo rm -rf /var/cache/apt/archives/* && \
 sudo rm -rf /var/lib/apt/lists/*
 
-# START THE CONTAINER
+RUN echo -e '\033[36;1m ******* CONTAINER START COMMAND ******** \033[0m'
 CMD wireshark \
