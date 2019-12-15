@@ -7,7 +7,6 @@ ENV LOCALES fr_FR.UTF-8
 
 RUN echo -e '\033[36;1m ******* INSTALL PACKAGES ******** \033[0m'; \
   apt-get update && apt-get install --no-install-recommends -y \
-  sudo \
   locales \
   apt-transport-https \
   ca-certificates \
@@ -30,7 +29,7 @@ RUN echo -e '\033[36;1m ******* INSTALL APP ******** \033[0m'; \
 RUN echo -e '\033[36;1m ******* ADD USER & ADD USER TO THE GROUP WIRESHARK ******** \033[0m'; \
   useradd -d /home/${USER} -m ${USER} -g wireshark; \
   passwd -d ${USER}; \
-  adduser ${USER} sudo
+  adduser ${USER}
 
 RUN echo -e '\033[36;1m ******* SELECT USER ******** \033[0m'
 USER ${USER}
