@@ -5,11 +5,13 @@
 
 ## INDEX
 
-- [Badges](#BADGES)
-- [Introduction](#INTRODUCTION)
-- [Prerequisites](#PREREQUISITESITES)
-- [Install](#INSTALL)
-- [License](#LICENSE)
+- [WIRESHARK](#wireshark)
+  - [INDEX](#index)
+  - [BADGES](#badges)
+  - [INTRODUCTION](#introduction)
+  - [PREREQUISITES](#prerequisites)
+  - [INSTALL](#install)
+  - [LICENSE](#license)
 
 
 ## BADGES
@@ -41,7 +43,7 @@ Use [docker](https://www.docker.com)
 ## INSTALL
 
 ```
-docker run -d --name wireshark -v /tmp/.X11-unix/:/tmp/.X11-unix/ -v ${HOME}:/home/wireshark -v /etc/localtime:/etc/localtime:ro --network host --cap-add=NET_ADMIN -e DISPLAY alexandreoda/wireshark
+docker run -d --name wireshark -v ${HOME}:/home/wireshark -v /tmp/.X11-unix/:/tmp/.X11-unix/ -v ${XAUTHORITY}:/xauthority:ro -e XAUTHORITY='/xauthority' -e DISPLAY --network host --cap-add=NET_ADMIN alexandreoda/wireshark
 ```
 
 

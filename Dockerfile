@@ -1,31 +1,29 @@
-FROM debian:stretch-slim
+FROM alpine:edge
 
 LABEL authors https://www.oda-alexandre.com/
 
 ENV USER wireshark
-ENV HOME /home/${USER} 
-ENV LOCALES fr_FR.UTF-8
+ENV HOME /home/${USER}
+ENV SHELL /bin/bash
 
 RUN echo -e '\033[36;1m ******* INSTALL PACKAGES ******** \033[0m'; \
-  apt-get update && apt-get install --no-install-recommends -y \
+  apk --no-cache add \
   sudo \
-  locales \
   wireshark
 
-RUN echo -e '\033[36;1m ******* CHANGE LOCALES ******** \033[0m'; \
-  locale-gen ${LOCALES}
-
 RUN echo -e '\033[36;1m ******* ADD USER ******** \033[0m'; \
-  useradd -d ${HOME} -m ${USER}; \
-  passwd -d ${USER}; \
-  adduser ${USER} sudo
-
-RUN echo -e '\033[36;1m ******* CLEANING ******** \033[0m'; \
-  apt-get --purge autoremove -y; \
-  apt-get autoclean -y; \
-  rm /etc/apt/sources.list; \
-  rm -rf /var/cache/apt/archives/*; \
-  rm -rf /var/lib/apt/lists/*
+  addgroup \
+  -S \
+  -g 1000 \
+  ${USER}; \
+  adduser \
+  --gecos "" \
+  --home ${HOME} \
+  --disabled-password \
+  --shell ${SHELL} \
+  --system \
+  --uid 1000 \
+  ${USER}
 
 RUN echo -e '\033[36;1m ******* SELECT USER ******** \033[0m'
 USER ${USER}
