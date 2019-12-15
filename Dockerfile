@@ -28,8 +28,7 @@ RUN echo -e '\033[36;1m ******* INSTALL APP ******** \033[0m'; \
 
 RUN echo -e '\033[36;1m ******* ADD USER & ADD USER TO THE GROUP WIRESHARK ******** \033[0m'; \
   useradd -d /home/${USER} -m ${USER} -g wireshark; \
-  passwd -d ${USER}; \
-  adduser ${USER}
+  passwd -d ${USER}
 
 RUN echo -e '\033[36;1m ******* SELECT USER ******** \033[0m'
 USER ${USER}
