@@ -1,6 +1,6 @@
 # WIRESHARK
 
-<img src="http://www.packetiq.com/Images/Powered%20by%20WS%20Oval.png/" width="200" height="200"/>
+<img src="https://assets.gitlab-static.net/uploads/-/system/project/avatar/12904490/wireshark-logo-png-1.png" width="200" height="200"/>
 
 
 ## INDEX
