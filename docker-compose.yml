@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+  wireshark:
+    container_name: wireshark
+    image: alexandreoda/wireshark
+    restart: "no"
+    network_mode: host
+    privileged: false
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - DISPLAY
+      - XAUTHORITY='/xauthority'
+    volumes:
+      - "${HOME}:/home/wireshark"
+      - "/tmp/.X11-unix/:/tmp/.X11-unix/"
+      - "${XAUTHORITY}:/xauthority:ro"
+      - "/etc/localtime:/etc/localtime:ro"

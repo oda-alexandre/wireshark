@@ -10,6 +10,8 @@
   - [INTRODUCTION](#introduction)
   - [PREREQUISITES](#prerequisites)
   - [INSTALL](#install)
+    - [DOCKER RUN](#docker-run)
+    - [DOCKER COMPOSE](#docker-compose)
   - [LICENSE](#license)
 
 ## BADGES
@@ -24,7 +26,7 @@ Docker image of :
 
 Continuous integration on :
 
-- [gitlab](https://gitlab.com/oda-alexandre/wireshark/pipelines)
+- [gitlab pipelines](https://gitlab.com/oda-alexandre/wireshark/pipelines)
 
 Automatically updated on :
 
@@ -36,7 +38,35 @@ Use [docker](https://www.docker.com)
 
 ## INSTALL
 
-```docker run -d --name wireshark -v ${HOME}:/home/wireshark -v /tmp/.X11-unix/:/tmp/.X11-unix/ -v ${XAUTHORITY}:/xauthority:ro -e XAUTHORITY='/xauthority' -e DISPLAY --network host --cap-add=NET_ADMIN alexandreoda/wireshark```
+### DOCKER RUN
+
+```\
+docker run -d --name wireshark -v ${HOME}:/home/wireshark v ${HOME}:/home/wireshark -v /tmp/.X11-unix/:/tmp/.X11-unix/ -v ${XAUTHORITY}:/xauthority:ro -e XAUTHORITY='/xauthority' -e DISPLAY --network host --cap-add=NET_ADMIN alexandreoda/wireshark
+```
+
+### DOCKER COMPOSE
+
+```yml
+version: "3.7"
+
+services:
+  wireshark:
+    container_name: wireshark
+    image: alexandreoda/wireshark
+    restart: "no"
+    network_mode: host
+    privileged: false
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - DISPLAY
+      - XAUTHORITY='/xauthority'
+    volumes:
+      - "${HOME}:/home/wireshark"
+      - "/tmp/.X11-unix/:/tmp/.X11-unix/"
+      - "${XAUTHORITY}:/xauthority:ro"
+      - "/etc/localtime:/etc/localtime:ro"
+```
 
 ## LICENSE
 
