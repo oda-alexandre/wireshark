@@ -41,7 +41,16 @@ Use [docker](https://www.docker.com)
 ### DOCKER RUN
 
 ```\
-docker run -d --name wireshark -v ${HOME}:/home/wireshark v ${HOME}:/home/wireshark -v /tmp/.X11-unix/:/tmp/.X11-unix/ -v ${XAUTHORITY}:/xauthority:ro -e XAUTHORITY='/xauthority' -e DISPLAY --network host --cap-add=NET_ADMIN alexandreoda/wireshark
+docker run -d \
+--name wireshark \
+--network host \
+--cap-add=NET_ADMIN \
+-e DISPLAY \
+-e XAUTHORITY='/xauthority' \
+-v ${HOME}:/home/wireshark \
+-v /tmp/.X11-unix/:/tmp/.X11-unix/ \
+-v ${XAUTHORITY}:/xauthority:ro \
+alexandreoda/wireshark
 ```
 
 ### DOCKER COMPOSE
